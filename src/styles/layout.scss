@@ -1,0 +1,402 @@
+// ==========================================================================
+// LAYOUT STYLES
+// ==========================================================================
+
+// Header Layout
+// --------------------------------------------------------------------------
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-index-fixed;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all $transition-base;
+
+  &.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: $shadow-md;
+  }
+}
+
+.header-container {
+  @include container;
+  @include flex-between;
+  height: 70px;
+}
+
+.logo {
+  flex-shrink: 0;
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  text-decoration: none;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary-dark;
+  }
+}
+
+.nav {
+  @include flex-center;
+  gap: $spacing-8;
+
+  @include mobile {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: $color-white;
+    border-bottom: 1px solid $color-border-light;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all $transition-base;
+    box-shadow: $shadow-lg;
+    flex-direction: column;
+    padding: $spacing-4;
+    gap: $spacing-4;
+
+    &.nav-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.nav-link {
+  color: $color-text-primary;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  transition: color $transition-base;
+  position: relative;
+
+  &:hover {
+    color: $color-primary;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $color-primary;
+    transition: width $transition-base;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+
+  @include mobile {
+    &::after {
+      display: none;
+    }
+  }
+}
+
+.mobile-menu-button {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+
+  @include mobile {
+    display: flex;
+  }
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  background: $color-text-primary;
+  transition: all $transition-base;
+  transform-origin: center;
+
+  .mobile-menu-button.open & {
+    &:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -6px);
+    }
+  }
+}
+
+// Footer Layout
+// --------------------------------------------------------------------------
+.footer {
+  background: $color-gray-900;
+  color: $color-white;
+  margin-top: auto;
+}
+
+.footer-container {
+  @include container;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  gap: $spacing-12;
+  padding: $spacing-16 0 $spacing-8;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-8;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-6;
+    padding: $spacing-12 0 $spacing-6;
+  }
+}
+
+.footer-section {
+  @include flex-column;
+  gap: $spacing-4;
+}
+
+.footer-logo {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-bold;
+  color: $color-primary;
+  text-decoration: none;
+  margin-bottom: $spacing-2;
+}
+
+.footer-description {
+  color: $color-gray-300;
+  line-height: $line-height-relaxed;
+  font-size: $font-size-sm;
+}
+
+.footer-title {
+  font-size: $font-size-lg;
+  font-weight: $font-weight-semibold;
+  color: $color-white;
+  margin-bottom: $spacing-4;
+}
+
+.footer-links {
+  @include flex-column;
+  gap: $spacing-3;
+}
+
+.footer-link {
+  color: $color-gray-300;
+  text-decoration: none;
+  font-size: $font-size-sm;
+  transition: color $transition-base;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.footer-bottom {
+  border-top: 1px solid $color-gray-700;
+  padding: $spacing-8 0;
+  @include flex-between;
+
+  @include mobile {
+    @include flex-column;
+    gap: $spacing-4;
+    text-align: center;
+  }
+}
+
+.copyright {
+  color: $color-gray-400;
+  font-size: $font-size-sm;
+}
+
+.social-links {
+  @include flex-center;
+  gap: $spacing-4;
+}
+
+.social-link {
+  color: $color-gray-400;
+  transition: all $transition-base;
+  @include flex-center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba($color-gray-600, 0.3);
+
+  &:hover {
+    color: $color-primary;
+    background: rgba($color-primary, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+// Main Content Layout
+// --------------------------------------------------------------------------
+.main-content {
+  flex: 1;
+  padding-top: 70px; // Account for fixed header
+}
+
+.section {
+  padding: $spacing-20 0;
+
+  @include mobile {
+    padding: $spacing-16 0;
+  }
+}
+
+.section-container {
+  @include container;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: $spacing-16;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include mobile {
+    margin-bottom: $spacing-12;
+  }
+}
+
+.section-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+  color: $color-white;
+  padding: $spacing-2 $spacing-4;
+  border-radius: $border-radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-semibold;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: $spacing-4;
+}
+
+.section-title {
+  @include heading-2;
+  margin-bottom: $spacing-6;
+
+  .highlight {
+    background: linear-gradient(135deg, $color-primary, $color-primary-dark);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+  }
+}
+
+.section-description {
+  @include body-large;
+  margin: 0;
+}
+
+// Grid Layouts
+// --------------------------------------------------------------------------
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-12;
+  align-items: center;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-8;
+  }
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-8;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $spacing-6;
+
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.grid-auto {
+  @include grid-auto-fit(300px);
+}
+
+// Responsive Utilities
+// --------------------------------------------------------------------------
+.hide-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.hide-tablet {
+  @include tablet {
+    display: none !important;
+  }
+}
+
+.hide-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+.show-mobile {
+  display: none !important;
+
+  @include mobile {
+    display: block !important;
+  }
+}
+
+.show-tablet {
+  display: none !important;
+
+  @include tablet {
+    display: block !important;
+  }
+}
+
+.show-desktop {
+  display: none !important;
+
+  @include desktop {
+    display: block !important;
+  }
+}

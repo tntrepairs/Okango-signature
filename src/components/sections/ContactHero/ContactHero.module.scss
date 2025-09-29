@@ -1,0 +1,52 @@
+// Contact Hero Section Styles
+.contactHero {
+  padding: 8rem 0 4rem;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.content {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.breadcrumb {
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: #1e293b;
+  margin: 0;
+  letter-spacing: -0.025em;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
+}
+
+.description {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin: 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
