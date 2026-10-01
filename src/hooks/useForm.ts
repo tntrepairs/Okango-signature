@@ -4,7 +4,7 @@ import { FormError } from '@/types';
 // Generic form hook
 export function useForm<T extends Record<string, any>>(
   initialValues: T,
-  validationRules?: Record<keyof T, any>
+  validationRules?: Partial<Record<keyof T, any>>
 ) {
   const [values, setFormValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<FormError[]>([]);
