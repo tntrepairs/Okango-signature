@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 
 const revealSelector = [
   '.hero-content',
+  '.hero-shell',
   '.ticker-band',
   '.split-section',
   '.collection-band',

@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Manrope } from "next/font/google";
 import "@/styles/globals.scss";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AnimationRuntime from "@/components/AnimationRuntime";
 
-const inter = Inter({ 
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
-});
-
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-sans",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+      <body className={manrope.variable}>
         <div className="app">
           <AnimationRuntime />
           <Header />

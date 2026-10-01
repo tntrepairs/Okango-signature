@@ -1,45 +1,44 @@
 .footer {
-  background: #06100a;
-  color: #f6e9c8;
-  border-top: 1px solid rgba(246, 215, 121, 0.22);
+  background: #050833;
+  color: #fffaf4;
+  border-top: 1px solid rgba(255, 250, 244, 0.12);
 }
 
 .container {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 58px 0;
+  padding: 56px 0;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.4fr 1fr 1fr;
   gap: 36px;
 }
 
 .brand {
   display: flex;
-  gap: 16px;
+  gap: 18px;
   align-items: flex-start;
+}
+
+.logoImage {
+  width: 112px;
+  height: auto;
+  padding: 8px;
+  border-radius: 22px;
+  background: #fffaf4;
+  mix-blend-mode: normal;
 }
 
 .brand h2 {
   margin: 0 0 8px;
-  color: #f6e9c8;
-  font-family: var(--font-display), serif;
-  font-size: 1.55rem;
+  color: #fffaf4;
+  font-size: 1.45rem;
+  letter-spacing: -0.04em;
 }
 
 .brand p,
 .contact span {
   margin: 0;
-  color: rgba(246, 233, 200, 0.68);
-}
-
-.logoMark {
-  width: 34px;
-  height: 42px;
-  flex: 0 0 auto;
-  border: 2px solid #d7a94c;
-  border-radius: 52% 52% 56% 56%;
-  transform: rotate(45deg);
-  background: linear-gradient(135deg, #6f4315, #f6d779 45%, #9b651d 76%, #ffe5a2);
+  color: rgba(255, 250, 244, 0.66);
 }
 
 .links,
@@ -51,23 +50,23 @@
 
 .links a,
 .contact a {
-  color: rgba(246, 233, 200, 0.78);
+  color: rgba(255, 250, 244, 0.78);
 }
 
 .links a:hover,
 .contact a:hover {
-  color: #f6d779;
+  color: #d7aa57;
 }
 
 .bottom {
-  width: min(1180px, calc(100% - 32px));
+  width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
   padding: 20px 0 28px;
   display: flex;
   justify-content: space-between;
   gap: 18px;
-  border-top: 1px solid rgba(246, 215, 121, 0.16);
-  color: rgba(246, 233, 200, 0.55);
+  border-top: 1px solid rgba(255, 250, 244, 0.12);
+  color: rgba(255, 250, 244, 0.52);
   font-size: 0.86rem;
 }
 

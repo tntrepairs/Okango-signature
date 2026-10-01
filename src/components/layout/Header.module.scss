@@ -1,47 +1,40 @@
 .header {
   position: fixed;
-  inset: 0 0 auto;
-  z-index: 50;
-  background: rgba(8, 20, 13, 0.82);
-  border-bottom: 1px solid rgba(219, 177, 91, 0.2);
-  backdrop-filter: blur(18px);
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  pointer-events: none;
 }
 
 .container {
-  width: min(1180px, calc(100% - 32px));
-  height: 72px;
+  width: min(1120px, calc(100% - 48px));
+  height: 64px;
   margin: 0 auto;
+  padding: 0 18px 0 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  border-radius: 999px;
+  background: rgba(255, 250, 244, 0.94);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.14);
+  pointer-events: auto;
 }
 
 .logoLink {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  color: #f6e9c8;
+  width: 118px;
+  height: 44px;
+  overflow: hidden;
 }
 
-.logoMark {
-  width: 34px;
-  height: 42px;
-  display: inline-block;
-  border: 2px solid #d7a94c;
-  border-radius: 52% 52% 56% 56%;
-  transform: rotate(45deg);
-  background:
-    radial-gradient(circle at 62% 36%, #fff3ad 0 10%, transparent 12%),
-    linear-gradient(135deg, #6f4315, #f6d779 45%, #9b651d 76%, #ffe5a2);
-  box-shadow: 0 0 24px rgba(215, 169, 76, 0.22);
-}
-
-.logoText {
-  font-family: var(--font-display), serif;
-  font-size: 1.05rem;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+.logoImage {
+  width: 118px;
+  height: auto;
+  mix-blend-mode: multiply;
+  transform: scale(1.28);
 }
 
 .nav {
@@ -51,28 +44,30 @@
 .navList {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
   list-style: none;
 }
 
 .navLink {
-  color: rgba(246, 233, 200, 0.74);
-  font-size: 0.9rem;
+  color: #10122a;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .navLink:hover {
-  color: #f6d779;
+  color: #0200b8;
 }
 
 .ctaButton {
-  min-width: 94px;
+  min-width: 96px;
   padding: 11px 18px;
-  border: 1px solid rgba(246, 215, 121, 0.7);
   border-radius: 999px;
-  color: #08140d;
-  background: #f6d779;
-  font-size: 0.9rem;
-  font-weight: 700;
+  color: #fffaf4;
+  background: #0200b8;
+  font-size: 0.82rem;
+  font-weight: 800;
   text-align: center;
 }
 
@@ -81,9 +76,9 @@
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 40px;
-  height: 40px;
-  border: 1px solid rgba(246, 215, 121, 0.3);
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(5, 8, 51, 0.12);
   border-radius: 999px;
 }
 
@@ -91,7 +86,7 @@
   width: 18px;
   height: 2px;
   margin: 0 auto;
-  background: #f6e9c8;
+  background: #050833;
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
@@ -109,27 +104,24 @@
 
 @media (max-width: 760px) {
   .container {
-    width: min(100% - 24px, 1180px);
-  }
-
-  .logoText {
-    font-size: 0.95rem;
+    width: min(100% - 24px, 1120px);
+    height: 62px;
   }
 
   .nav {
     position: fixed;
-    top: 72px;
+    top: 92px;
     left: 12px;
     right: 12px;
     display: block;
     padding: 18px;
-    border: 1px solid rgba(246, 215, 121, 0.25);
-    border-radius: 8px;
-    background: rgba(8, 20, 13, 0.96);
+    border-radius: 24px;
+    background: rgba(255, 250, 244, 0.98);
     opacity: 0;
     pointer-events: none;
     transform: translateY(-8px);
     transition: opacity 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.16);
   }
 
   .navOpen {

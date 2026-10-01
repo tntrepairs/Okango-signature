@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 
@@ -22,8 +23,14 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logoLink} onClick={closeMenu}>
-          <span className={styles.logoMark} aria-hidden="true" />
-          <span className={styles.logoText}>Okavango Signature</span>
+          <Image
+            src="/images/okavango-logo-cutout.png"
+            alt="Okavango Signature"
+            width={118}
+            height={76}
+            className={styles.logoImage}
+            priority
+          />
         </Link>
 
         <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>

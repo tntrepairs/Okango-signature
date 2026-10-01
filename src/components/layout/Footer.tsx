@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -6,7 +7,13 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.brand}>
-          <span className={styles.logoMark} aria-hidden="true" />
+          <Image
+            src="/images/okavango-logo-cutout.png"
+            alt="Okavango Signature"
+            width={140}
+            height={90}
+            className={styles.logoImage}
+          />
           <div>
             <h2>Okavango Signature</h2>
             <p>Where heritage meets modern elegance.</p>

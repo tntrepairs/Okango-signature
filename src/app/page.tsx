@@ -2,74 +2,63 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const specs = [
-  ['Case', '40 mm 316L stainless steel'],
-  ['Crystal', 'Sapphire front glass'],
-  ['Movement', 'Japanese Miyota movement'],
-  ['Water', '50 m resistance'],
-  ['Fit', 'Unisex case profile'],
-  ['Reserve', '50% deposit'],
-];
-
-const journal = [
-  {
-    title: 'The map dial',
-    copy: 'A winding dial language inspired by the waterways of the Okavango Delta.',
-  },
-  {
-    title: 'The mokoro caseback',
-    copy: 'A quiet engraving that honors the poler, the journey, and the living heritage of the Delta.',
-  },
-  {
-    title: 'Built with purpose',
-    copy: 'A portion of each sale is positioned around conservation support for the landscape that inspires the brand.',
-  },
+  ['40 mm', 'unisex case'],
+  ['P5,200', 'launch price'],
+  ['50%', 'deposit'],
 ];
 
 export default function Home() {
   return (
     <>
       <section className="hero-section" id="top">
-        <div className="hero-media" aria-hidden="true">
-          <Image
-            src="/images/delta-flow-hero.webp"
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="hero-image"
-          />
-        </div>
-        <div className="hero-content">
-          <p className="eyebrow">Botswana luxury timepieces</p>
-          <h1>Okavango Signature</h1>
-          <p className="hero-copy">
-            Where heritage meets modern elegance. The Delta Flow Edition carries
-            the rhythm of the Okavango Delta into a refined everyday timepiece.
-          </p>
-          <div className="hero-actions">
-            <Link href="/collection" className="button primary">View Collection</Link>
-            <Link href="/story" className="button secondary">Read The Story</Link>
+        <div className="hero-shell">
+          <div className="hero-backdrop" aria-hidden="true" />
+          <p className="hero-kicker">Delta Flow Edition</p>
+          <h1 className="hero-word">Okavango</h1>
+          <div className="hero-watch-mask">
+            <Image
+              src="/images/delta-flow-watch-cutout.png"
+              alt="Okavango Signature Delta Flow watch"
+              width={900}
+              height={1125}
+              priority
+              sizes="(max-width: 760px) 88vw, 42vw"
+              className="hero-watch"
+            />
+          </div>
+          <div className="hero-copy">
+            <span>Blue & silver dials</span>
+            <strong>Pre-order by April 30, 2026</strong>
+          </div>
+          <Link href="/contact" className="hero-cta">
+            Reserve yours
+            <span aria-hidden="true">→</span>
+          </Link>
+          <div className="hero-mini">
+            <Image
+              src="/images/okavango-delta-aerial.jpg"
+              alt="Okavango Delta aerial waterways"
+              width={280}
+              height={160}
+            />
+            <span>Inspired by the Delta’s channels.</span>
           </div>
         </div>
       </section>
 
       <section className="ticker-band" aria-label="Brand pillars">
         <span>Delta Flow Edition</span>
-        <span>Gaborone, Botswana</span>
-        <span>316L steel</span>
+        <span>May production release</span>
         <span>Blue and silver dials</span>
-        <span>Conservation-minded luxury</span>
       </section>
 
       <section className="split-section" id="collection">
         <div className="section-copy">
-          <p className="eyebrow">First production release</p>
-          <h2>Delta Flow, shaped by water and memory.</h2>
+          <p className="eyebrow">First release</p>
+          <h2>Time shaped by water.</h2>
           <p>
-            The first Okavango Signature watch release draws from the Delta:
-            flowing dial lines, a polished 40 mm profile, and a caseback tribute
-            to mokoro heritage. It is designed as a Botswana-born luxury object
-            with a global wrist presence.
+            The dial traces the Okavango Delta’s waterways across a polished
+            40 mm case. Clean, unisex, and made for everyday ceremony.
           </p>
           <div className="spec-grid">
             {specs.map(([label, value]) => (
@@ -92,57 +81,31 @@ export default function Home() {
       </section>
 
       <section className="collection-band">
-        <article>
+        <article className="delta-panel">
           <Image
-            src="/images/delta-flow-silver.webp"
-            alt="Okavango Signature Delta Flow silver dial watch"
-            width={620}
-            height={620}
+            src="/images/okavango-delta-aerial.jpg"
+            alt="Okavango Delta aerial waterways"
+            width={900}
+            height={520}
             sizes="(max-width: 900px) 100vw, 40vw"
           />
         </article>
         <div>
-          <p className="eyebrow">Available finishes</p>
-          <h2>Silver restraint. Blue depth.</h2>
+          <p className="eyebrow">Origin</p>
+          <h2>Not decoration. Direction.</h2>
           <p>
-            The launch language is intentionally focused: two dial moods, one
-            story. Silver leans formal and luminous; blue carries the depth of
-            water, sky, and evening light over the Delta.
+            The watch takes its visual language from water channels, islands,
+            and the quiet geometry of the Delta from above.
           </p>
           <Link href="/contact" className="text-link">Reserve a watch</Link>
         </div>
       </section>
 
-      <section className="story-section" id="story">
-        <div>
-          <p className="eyebrow">African luxury, rooted</p>
-          <h2>Not only telling time. Telling origin.</h2>
-        </div>
-        <p>
-          Okavango Signature is a Botswana-based luxury brand founded in 2024,
-          blending watches, leather goods, jewelry, and fashion with cultural
-          storytelling. Its public brand position centers heritage, craft,
-          sustainability, and the responsibility of carrying the Delta beyond
-          borders.
-        </p>
-      </section>
-
-      <section className="journal-grid" id="journal">
-        {journal.map((item, index) => (
-          <article className="journal-card" key={item.title}>
-            <span>{String(index + 1).padStart(2, '0')}</span>
-            <h3>{item.title}</h3>
-            <p>{item.copy}</p>
-          </article>
-        ))}
-      </section>
-
       <section className="reserve-section" id="reserve">
-        <p className="eyebrow">Pre-order direction</p>
-        <h2>P5,200 / $395 USD public launch pricing.</h2>
+        <p className="eyebrow">Pre-order</p>
+        <h2>P5,200. Secure with a 50% deposit.</h2>
         <p>
-          Public brand posts list a 50% deposit model, blue and silver dial
-          options, and direct reservations through email, WhatsApp, or call.
+          First production release arrives in May. Available in blue and silver.
         </p>
         <div className="reserve-actions">
           <a href="mailto:ofannase@gmail.com" className="button primary">
