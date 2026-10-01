@@ -13,10 +13,11 @@ export function useForm<T extends Record<string, any>>(
   // Update field value
   const setValue = useCallback((field: keyof T, value: any) => {
     setFormValues(prev => ({ ...prev, [field]: value }));
+    const fieldName = String(field);
     
     // Clear error for this field when user starts typing
     if (errors.length > 0) {
-      setErrors(prev => prev.filter(error => error.field !== field));
+      setErrors(prev => prev.filter(error => error.field !== fieldName));
     }
   }, [errors]);
 
@@ -30,21 +31,22 @@ export function useForm<T extends Record<string, any>>(
     if (!validationRules || !validationRules[field]) return null;
 
     const rule = validationRules[field];
+    const fieldName = String(field);
     
     if (rule.required && (!value || value.toString().trim() === '')) {
-      return rule.message || `${field} is required`;
+      return rule.message || `${fieldName} is required`;
     }
 
     if (rule.minLength && value && value.length < rule.minLength) {
-      return rule.message || `${field} must be at least ${rule.minLength} characters`;
+      return rule.message || `${fieldName} must be at least ${rule.minLength} characters`;
     }
 
     if (rule.maxLength && value && value.length > rule.maxLength) {
-      return rule.message || `${field} must be no more than ${rule.maxLength} characters`;
+      return rule.message || `${fieldName} must be no more than ${rule.maxLength} characters`;
     }
 
     if (rule.pattern && value && !rule.pattern.test(value)) {
-      return rule.message || `${field} format is invalid`;
+      return rule.message || `${fieldName} format is invalid`;
     }
 
     return null;
