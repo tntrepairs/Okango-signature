@@ -6,13 +6,13 @@ export function useForm<T extends Record<string, any>>(
   initialValues: T,
   validationRules?: Record<keyof T, any>
 ) {
-  const [values, setValues] = useState<T>(initialValues);
+  const [values, setFormValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<FormError[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Update field value
   const setValue = useCallback((field: keyof T, value: any) => {
-    setValues(prev => ({ ...prev, [field]: value }));
+    setFormValues(prev => ({ ...prev, [field]: value }));
     
     // Clear error for this field when user starts typing
     if (errors.length > 0) {
@@ -22,7 +22,7 @@ export function useForm<T extends Record<string, any>>(
 
   // Update multiple values
   const setValues = useCallback((newValues: Partial<T>) => {
-    setValues(prev => ({ ...prev, ...newValues }));
+    setFormValues(prev => ({ ...prev, ...newValues }));
   }, []);
 
   // Validate single field
@@ -67,7 +67,7 @@ export function useForm<T extends Record<string, any>>(
 
   // Reset form
   const reset = useCallback(() => {
-    setValues(initialValues);
+    setFormValues(initialValues);
     setErrors([]);
     setIsSubmitting(false);
   }, [initialValues]);
