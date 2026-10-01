@@ -5,11 +5,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './Header.module.scss';
 
-const navItems = [
+const leftNavItems = [
   ['Collection', '/collection'],
   ['Story', '/story'],
   ['Journal', '/journal'],
+];
+
+const rightNavItems = [
   ['Contact', '/contact'],
+  ['Reserve', '/contact'],
 ];
 
 const Header = () => {
@@ -22,20 +26,9 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={styles.container}>
-        <Link href="/" className={styles.logoLink} onClick={closeMenu}>
-          <Image
-            src="/images/okavango-logo-cutout.png"
-            alt="Okavango Signature"
-            width={118}
-            height={76}
-            className={styles.logoImage}
-            priority
-          />
-        </Link>
-
-        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
+        <nav className={styles.desktopNav} aria-label="Primary left navigation">
           <ul className={styles.navList}>
-            {navItems.map(([label, href]) => (
+            {leftNavItems.map(([label, href]) => (
               <li className={styles.navItem} key={href}>
                 <Link href={href} className={styles.navLink} onClick={closeMenu}>
                   {label}
@@ -45,9 +38,44 @@ const Header = () => {
           </ul>
         </nav>
 
-        <Link href="/contact" className={styles.ctaButton}>
-          Reserve
+        <Link href="/" className={styles.logoLink} onClick={closeMenu}>
+          <Image
+            src="/images/okavango-logo-transparent.png"
+            alt=""
+            width={96}
+            height={96}
+            className={styles.logoImage}
+            priority
+          />
+          <span className={styles.logoText}>
+            <strong>Okavango</strong>
+            <span>Signature</span>
+          </span>
         </Link>
+
+        <nav className={`${styles.desktopNav} ${styles.rightNav}`} aria-label="Primary right navigation">
+          <ul className={styles.navList}>
+            {rightNavItems.map(([label, href]) => (
+              <li className={styles.navItem} key={label}>
+                <Link href={href} className={styles.navLink} onClick={closeMenu}>
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <nav className={`${styles.nav} ${isMenuOpen ? styles.navOpen : ''}`}>
+          <ul className={styles.navList}>
+            {[...leftNavItems, ...rightNavItems].map(([label, href]) => (
+              <li className={styles.navItem} key={`${label}-${href}`}>
+                <Link href={href} className={styles.navLink} onClick={closeMenu}>
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
         <button
           className={`${styles.mobileMenuButton} ${isMenuOpen ? styles.mobileMenuButtonOpen : ''}`}

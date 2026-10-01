@@ -8,10 +8,10 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.brand}>
           <Image
-            src="/images/okavango-logo-cutout.png"
+            src="/images/okavango-logo-transparent.png"
             alt="Okavango Signature"
-            width={140}
-            height={90}
+            width={96}
+            height={96}
             className={styles.logoImage}
           />
           <div>

@@ -12,36 +12,29 @@ export default function Home() {
     <>
       <section className="hero-section" id="top">
         <div className="hero-shell">
-          <div className="hero-backdrop" aria-hidden="true" />
-          <p className="hero-kicker">Delta Flow Edition</p>
-          <h1 className="hero-word">Okavango</h1>
-          <div className="hero-watch-mask">
+          <div className="hero-word" aria-hidden="true">Delta Flow</div>
+          <div className="hero-copy">
+            <p className="hero-kicker">Okavango Signature</p>
+            <h1>Delta Flow Edition</h1>
+            <span className="hero-rule" aria-hidden="true" />
+            <p>
+              Inspired by the channels and movement of the Okavango Delta.
+            </p>
+            <Link href="/contact" className="hero-cta">
+              Reserve yours
+              <span aria-hidden="true">-&gt;</span>
+            </Link>
+          </div>
+          <div className="hero-watch-stage">
             <Image
               src="/images/delta-flow-watch-cutout.png"
               alt="Okavango Signature Delta Flow watch"
-              width={900}
-              height={1125}
+              width={863}
+              height={1557}
               priority
-              sizes="(max-width: 760px) 88vw, 42vw"
+              sizes="(max-width: 760px) 96vw, 48vw"
               className="hero-watch"
             />
-          </div>
-          <div className="hero-copy">
-            <span>Blue & silver dials</span>
-            <strong>Pre-order by April 30, 2026</strong>
-          </div>
-          <Link href="/contact" className="hero-cta">
-            Reserve yours
-            <span aria-hidden="true">→</span>
-          </Link>
-          <div className="hero-mini">
-            <Image
-              src="/images/okavango-delta-aerial.jpg"
-              alt="Okavango Delta aerial waterways"
-              width={280}
-              height={160}
-            />
-            <span>Inspired by the Delta’s channels.</span>
           </div>
         </div>
       </section>
@@ -57,7 +50,7 @@ export default function Home() {
           <p className="eyebrow">First release</p>
           <h2>Time shaped by water.</h2>
           <p>
-            The dial traces the Okavango Delta’s waterways across a polished
+            The dial traces the Okavango Delta's waterways across a polished
             40 mm case. Clean, unisex, and made for everyday ceremony.
           </p>
           <div className="spec-grid">
