@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './Footer.module.scss';
 
 const Footer = () => {
@@ -8,15 +8,15 @@ const Footer = () => {
       <div className={styles.container}>
         <div className={styles.brand}>
           <Image
-            src="/images/okavango-logo-transparent.png"
+            src="/images/okavango-logo-asset.png"
             alt="Okavango Signature"
-            width={96}
-            height={96}
+            width={225}
+            height={225}
             className={styles.logoImage}
           />
           <div>
             <h2>Okavango Signature</h2>
-            <p>Where heritage meets modern elegance.</p>
+            <p>Delta Flow, shaped by the Okavango Delta.</p>
           </div>
         </div>
 
@@ -34,8 +34,8 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.bottom}>
-        <span>© {new Date().getFullYear()} Okavango Signature.</span>
-        <span>Luxury with origin, craft, and purpose.</span>
+        <span>Okavango Signature {new Date().getFullYear()}.</span>
+        <span>Delta Flow Edition.</span>
       </div>
     </footer>
   );

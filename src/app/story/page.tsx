@@ -1,6 +1,6 @@
 export const metadata = {
   title: 'Story | Okavango Signature',
-  description: 'The story and heritage behind Okavango Signature.',
+  description: 'The Delta origin behind Okavango Signature.',
 };
 
 export default function StoryPage() {
@@ -11,7 +11,7 @@ export default function StoryPage() {
         <h1>Born from the Delta.</h1>
         <p>
           Okavango Signature is a Botswana-based luxury brand shaped by the
-          timeless beauty and cultural richness of the Okavango Delta.
+          channels, islands, and movement of the Okavango Delta.
         </p>
       </section>
 

@@ -49,12 +49,10 @@ export default function CollectionPage() {
           </article>
         ))}
         <article className="content-card">
-          <h3>Public launch details</h3>
+          <h3>Release details</h3>
           <p>
-            Public brand updates list P5,200 / $395 USD launch pricing, blue and
-            silver dial options, and a 50% deposit reservation model. The sent
-            email notes an April 30, 2026 pre-order deadline and a May first
-            production release.
+            The sent pre-order note positions the release in blue and silver
+            dial options, with a May first production release.
           </p>
           <Link href="/contact" className="text-link">Ask availability</Link>
         </article>

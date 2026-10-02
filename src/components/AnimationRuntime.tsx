@@ -3,17 +3,21 @@
 import { useEffect } from 'react';
 
 const revealSelector = [
-  '.hero-content',
   '.hero-shell',
-  '.ticker-band',
-  '.split-section',
-  '.collection-band',
+  '.hero-copy',
+  '.hero-watch-stage',
+  '.journey-section',
+  '.story-copy',
+  '.section-media',
+  '.watch-figure',
+  '.feature-labels span',
+  '.water-ribbon',
+  '.water-words span',
+  '.statement-line',
+  '.finale-link',
   '.story-section',
-  '.reserve-section',
-  '.product-stage',
   '.journal-card',
   '.content-card',
-  '.spec-item',
 ].join(',');
 
 export default function AnimationRuntime() {

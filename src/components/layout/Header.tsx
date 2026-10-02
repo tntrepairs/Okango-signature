@@ -40,17 +40,13 @@ const Header = () => {
 
         <Link href="/" className={styles.logoLink} onClick={closeMenu}>
           <Image
-            src="/images/okavango-logo-transparent.png"
-            alt=""
-            width={96}
-            height={96}
+            src="/images/okavango-logo-asset.png"
+            alt="Okavango Signature"
+            width={225}
+            height={225}
             className={styles.logoImage}
             priority
           />
-          <span className={styles.logoText}>
-            <strong>Okavango</strong>
-            <span>Signature</span>
-          </span>
         </Link>
 
         <nav className={`${styles.desktopNav} ${styles.rightNav}`} aria-label="Primary right navigation">

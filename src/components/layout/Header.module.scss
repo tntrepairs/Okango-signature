@@ -9,7 +9,7 @@
 
 .container {
   width: min(100%, 1760px);
-  height: 128px;
+  height: 112px;
   margin: 0 auto;
   padding: 18px clamp(28px, 5vw, 92px) 0;
   display: grid;
@@ -21,7 +21,7 @@
 }
 
 .desktopNav {
-  padding-top: 34px;
+  padding-top: 36px;
 }
 
 .rightNav {
@@ -35,16 +35,16 @@
 .navList {
   display: flex;
   align-items: center;
-  gap: clamp(28px, 4.4vw, 72px);
+  gap: clamp(28px, 4vw, 64px);
   list-style: none;
 }
 
 .navLink {
   color: #10120f;
   font-family: var(--font-serif), Georgia, serif;
-  font-size: 0.98rem;
+  font-size: 0.92rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   transition: color 0.22s ease;
 }
@@ -54,37 +54,16 @@
 }
 
 .logoLink {
-  display: grid;
-  justify-items: center;
-  gap: 4px;
+  display: block;
   color: #10120f;
   text-align: center;
 }
 
 .logoImage {
-  width: 56px;
-  height: 56px;
+  width: clamp(54px, 4.6vw, 76px);
+  height: auto;
+  display: block;
   object-fit: contain;
-}
-
-.logoText {
-  display: grid;
-  gap: 1px;
-  text-transform: uppercase;
-}
-
-.logoText strong {
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: clamp(1.32rem, 1.8vw, 2rem);
-  font-weight: 700;
-  line-height: 0.82;
-  letter-spacing: 0.18em;
-}
-
-.logoText span {
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.48em;
 }
 
 .mobileMenuButton {
@@ -133,24 +112,10 @@
 
   .logoLink {
     justify-self: start;
-    grid-template-columns: auto auto;
-    align-items: center;
-    gap: 10px;
-    text-align: left;
   }
 
   .logoImage {
-    width: 42px;
-    height: 42px;
-  }
-
-  .logoText strong {
-    font-size: 1.18rem;
-  }
-
-  .logoText span {
-    font-size: 0.56rem;
-    letter-spacing: 0.36em;
+    width: 52px;
   }
 
   .nav {
