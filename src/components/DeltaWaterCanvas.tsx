@@ -39,13 +39,11 @@ const drawRiver = (
   context.save();
   context.lineCap = 'round';
   context.lineJoin = 'round';
-  context.globalCompositeOperation = 'multiply';
-  context.shadowColor = colorForProgress(progress, 0.16);
-  context.shadowBlur = width * 0.34;
+  context.globalCompositeOperation = 'source-over';
 
-  for (let layer = 0; layer < 5; layer += 1) {
-    const layerProgress = layer / 4;
-    const drift = Math.sin(phase * 0.7 + layer * 1.72) * width * 0.12;
+  for (let layer = 0; layer < 3; layer += 1) {
+    const layerProgress = layer / 2;
+    const drift = Math.sin(phase * 0.7 + layer * 1.72) * width * 0.09;
 
     context.beginPath();
     context.moveTo(points[0].x + drift, points[0].y);
@@ -69,7 +67,7 @@ const drawRiver = (
       );
     }
 
-    context.strokeStyle = colorForProgress(progress, mix(0.08, 0.2, 1 - layerProgress));
+    context.strokeStyle = colorForProgress(progress, mix(0.06, 0.16, 1 - layerProgress));
     context.lineWidth = width * mix(1, 0.22, layerProgress);
     context.stroke();
   }
@@ -77,7 +75,7 @@ const drawRiver = (
   context.globalCompositeOperation = 'screen';
   context.shadowBlur = 0;
 
-  for (let highlight = 0; highlight < 4; highlight += 1) {
+  for (let highlight = 0; highlight < 2; highlight += 1) {
     const offset = Math.sin(phase * 1.55 + highlight * 2.3) * width * 0.18;
     context.beginPath();
     context.moveTo(points[0].x + offset, points[0].y);
@@ -89,9 +87,9 @@ const drawRiver = (
       points[3].x + offset * 0.3,
       points[3].y,
     );
-    context.strokeStyle = `rgba(255, 255, 255, ${0.18 + Math.sin(phase + highlight) * 0.05})`;
+    context.strokeStyle = `rgba(255, 255, 255, ${0.14 + Math.sin(phase + highlight) * 0.04})`;
     context.lineWidth = Math.max(1, width * 0.025);
-    context.setLineDash([width * 0.32, width * 0.42]);
+    context.setLineDash([width * 0.28, width * 0.5]);
     context.lineDashOffset = -phase * width * (0.38 + highlight * 0.08);
     context.stroke();
   }
@@ -120,6 +118,7 @@ export default function DeltaWaterCanvas() {
     let height = 0;
     let dpr = 1;
     let isRunning = true;
+    let lastFrame = 0;
 
     const getScrollProgress = () => {
       const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
@@ -127,7 +126,7 @@ export default function DeltaWaterCanvas() {
     };
 
     const resize = () => {
-      dpr = Math.min(window.devicePixelRatio || 1, 1.65);
+      dpr = 1;
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = Math.floor(width * dpr);
@@ -137,19 +136,26 @@ export default function DeltaWaterCanvas() {
       context.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    const render = () => {
+    const render = (time = 0) => {
       if (!isRunning) {
         return;
       }
 
+      if (!reducedMotion.matches && time - lastFrame < 48) {
+        animationFrame = window.requestAnimationFrame(render);
+        return;
+      }
+
+      lastFrame = time;
+
       const progress = getScrollProgress();
       const reduced = reducedMotion.matches;
-      phase = reduced ? 0.2 : phase + 0.012;
+      phase = reduced ? 0.2 : phase + 0.036;
 
       context.clearRect(0, 0, width, height);
 
       const heroFade = Math.min(1, Math.max(0, progress * 8));
-      const baseWidth = mix(width * 0.12, width * 0.22, Math.sin(progress * Math.PI) ** 2);
+      const baseWidth = mix(width * 0.08, width * 0.15, Math.sin(progress * Math.PI) ** 2);
       const curveShift = Math.sin(progress * Math.PI * 2) * width * 0.18;
       const depth = mix(-height * 0.2, height * 0.28, progress);
 
@@ -175,19 +181,7 @@ export default function DeltaWaterCanvas() {
 
       if (progress > 0.16 && progress < 0.9) {
         context.globalAlpha = mix(0.18, 0.54, Math.sin(progress * Math.PI));
-        drawRiver(context, splitPath, baseWidth * 0.42, progress, phase + 2.2);
-      }
-
-      context.globalAlpha = 0.16;
-      for (let ripple = 0; ripple < 8; ripple += 1) {
-        const x = (width * ((ripple * 0.17 + progress * 0.6) % 1)) + Math.sin(phase + ripple) * 22;
-        const y = height * ((ripple * 0.13 + phase * 0.025) % 1);
-        const radius = 16 + Math.sin(phase * 1.8 + ripple) * 8;
-        context.beginPath();
-        context.arc(x, y, radius, 0, Math.PI * 2);
-        context.strokeStyle = colorForProgress(progress, 0.18);
-        context.lineWidth = 1;
-        context.stroke();
+        drawRiver(context, splitPath, baseWidth * 0.34, progress, phase + 2.2);
       }
 
       context.globalAlpha = 1;
@@ -215,14 +209,18 @@ export default function DeltaWaterCanvas() {
 
     window.addEventListener('resize', onResize);
     window.addEventListener('scroll', onScroll, { passive: true });
-    reducedMotion.addEventListener('change', render);
+    const onMotionChange = () => {
+      render();
+    };
+
+    reducedMotion.addEventListener('change', onMotionChange);
 
     return () => {
       isRunning = false;
       window.cancelAnimationFrame(animationFrame);
       window.removeEventListener('resize', onResize);
       window.removeEventListener('scroll', onScroll);
-      reducedMotion.removeEventListener('change', render);
+      reducedMotion.removeEventListener('change', onMotionChange);
     };
   }, []);
 

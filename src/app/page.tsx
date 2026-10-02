@@ -18,11 +18,10 @@ export default function Home() {
             <div className="hero-copy">
               <p className="hero-kicker">Okavango Signature</p>
               <h1>Delta Flow<br />Edition</h1>
-              <span className="hero-rule" aria-hidden="true" />
               <p>Inspired by the channels and islands of the Okavango Delta.</p>
               <Link href="#origin" className="hero-cta">
                 Explore Delta Flow
-                <span aria-hidden="true">-&gt;</span>
+                <span aria-hidden="true">→</span>
               </Link>
             </div>
             <div className="hero-watch-stage">

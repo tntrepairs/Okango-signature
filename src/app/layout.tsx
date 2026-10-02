@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { DM_Sans, Forum } from "next/font/google";
 import "@/styles/globals.scss";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import AnimationRuntime from "@/components/AnimationRuntime";
 
-const manrope = Manrope({
+const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-const cormorant = Cormorant_Garamond({
+const forum = Forum({
   subsets: ["latin"],
   variable: "--font-serif",
-  weight: ["400", "500", "600", "700"],
+  weight: "400",
 });
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${cormorant.variable}`}>
+      <body className={`${dmSans.variable} ${forum.variable}`}>
         <div className="app">
           <AnimationRuntime />
           <Header />

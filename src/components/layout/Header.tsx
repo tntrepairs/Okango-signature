@@ -58,6 +58,15 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li className={styles.navItem}>
+              <Link href="/contact" className={styles.bagLink} aria-label="Reservation bag" onClick={closeMenu}>
+                <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.bagIcon}>
+                  <path d="M7 8h10l1 12H6L7 8Z" />
+                  <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+                </svg>
+                <span>(0)</span>
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -70,6 +79,15 @@ const Header = () => {
                 </Link>
               </li>
             ))}
+            <li className={styles.navItem}>
+              <Link href="/contact" className={styles.bagLink} aria-label="Reservation bag" onClick={closeMenu}>
+                <svg viewBox="0 0 24 24" aria-hidden="true" className={styles.bagIcon}>
+                  <path d="M7 8h10l1 12H6L7 8Z" />
+                  <path d="M9 8V6a3 3 0 0 1 6 0v2" />
+                </svg>
+                <span>(0)</span>
+              </Link>
+            </li>
           </ul>
         </nav>
 

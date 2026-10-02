@@ -41,10 +41,10 @@
 
 .navLink {
   color: #10120f;
-  font-family: var(--font-serif), Georgia, serif;
-  font-size: 0.92rem;
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 0.74rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   transition: color 0.22s ease;
 }
@@ -64,6 +64,32 @@
   height: auto;
   display: block;
   object-fit: contain;
+}
+
+.bagLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #10120f;
+  font-family: var(--font-sans), Arial, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  transition: color 0.22s ease;
+}
+
+.bagLink:hover {
+  color: #a87f2c;
+}
+
+.bagIcon {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .mobileMenuButton {
